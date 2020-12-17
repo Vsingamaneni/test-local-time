@@ -10,14 +10,22 @@ var shortDateFormat = "ddd @ h:mmA"; // this is just an example of storing a dat
 app.locals.moment = moment; // this makes moment available as a variable in every EJS page
 app.locals.shortDateFormat = shortDateFormat;
 
-// Path to Js File
-var timeScript = require('./localTime.js');
 
 app.get('/time',(req, res) => {
-        res.render('time', {
+    var timeZone = "America/New_York";
+    let date = new Date();
+        console.log('Given IST datetime: ' + date);
+
+    let usaTime =
+        date.toLocaleString("en-US", {
+            timeZone: "America/New_York"
+        });
+    console.log('USA datetime: ' + usaTime);
+
+    res.render('time', {
             title : 'Local Time',
-            utils: timeScript,
-            moment: moment
+            timeZone: timeZone,
+            usaTime: usaTime
         });
 });
 

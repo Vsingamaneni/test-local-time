@@ -4,27 +4,11 @@
   <title><%= title %></title>
 </head>
 <body>
-
-<%
-get_Date = function(localString) {
-  console.log('localString' + localString);
-  return new Date(localString).toLocaleDateString() + " " + new Date(localString).toLocaleTimeString();
-}%>
-
-
 <div style="margin:0 auto;text-align: center; color: black">
-<p> Time from calling the JS function from ejs file  : <%= utils.currentLocalDateString() %></p>
-<p> Time after passing the date from ejs file as parameter to JS file : <%= utils.localDateString(new Date()) %></p>
-<p> Date on client: <%= get_Date(new Date())%></p>
+<p>client timezone <%= timeZone %></p>
+<p>Newyork Time <%= usaTime %></p>
+
 </div>
-
-
 </body>
-<script>
 
-
-  window.onload = function () {
-    document.getElementById("client-date").textContent = localDateString(new Date());
-  }
-</script>
 </html>

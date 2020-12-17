@@ -5,7 +5,8 @@
 </head>
 <body>
 <div style="margin:0 auto;text-align: center; color: black">
-<p> The current time in my web browser is : <%= utils.currentLocalDateString() %></p>
+<p> Time from calling the JS function from ejs file  : <%= utils.currentLocalDateString() %></p>
+<p> Time after passing the date from ejs file as parameter to JS file : <%= utils.localDateString(new Date()) %></p>
 </div>
 </body>
 </html>

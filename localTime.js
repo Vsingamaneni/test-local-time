@@ -5,5 +5,6 @@ exports.currentLocalDateString = function(){
 }
 
 exports.localDateString = function(localString){
+    console.log('localString' + localString);
     return new Date(localString).toLocaleDateString() + " " + new Date(localString).toLocaleTimeString();
 }

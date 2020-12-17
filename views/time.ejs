@@ -7,6 +7,7 @@
 <div style="margin:0 auto;text-align: center; color: black">
 <p> Time from calling the JS function from ejs file  : <%= utils.currentLocalDateString() %></p>
 <p> Time after passing the date from ejs file as parameter to JS file : <%= utils.localDateString(new Date()) %></p>
+<p> <%= moment(Date()).format(shortDateFormat) %> </p>
 </div>
 </body>
 </html>

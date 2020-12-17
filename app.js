@@ -13,7 +13,8 @@ app.locals.shortDateFormat = shortDateFormat;
 
 app.get('/time',(req, res) => {
     var timeZone = "America/New_York";
-    let date = new Date();
+    let timeDate = 'Dec 17, 2020 17:00:00 Z';
+    let date = new Date(timeDate);
         console.log('Given IST datetime: ' + date);
 
     let usaTime =

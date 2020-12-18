@@ -13,10 +13,9 @@ app.locals.shortDateFormat = shortDateFormat;
 
 
 app.get('/time',(req, res) => {
-    var timeZone = "America/New_York";
-    let timeDate = 'Dec 17, 2020 17:00:00 Z';
+    let timeDate = 'Dec 17, 2020 18:00:00 Z';
     let date = new Date(timeDate);
-        console.log('Given IST datetime: ' + date);
+    console.log('Given IST datetime: ' + date);
 
     let usaTime =
         date.toLocaleString("en-US", {
@@ -30,17 +29,23 @@ app.get('/time',(req, res) => {
         });
     console.log('USA New York dateTime: ' + usaNewyorkTime);
 
+    let indiaKolkataTime =
+        date.toLocaleString("en-US", {
+            timeZone: "Asia/Kolkata"
+        });
+    console.log('USA New York dateTime: ' + indiaKolkataTime);
+
 
     var timeValue = toTimeZone(timeDate, "America/Chicago");
 
 
     res.render('time', {
             title : 'Local Time',
-            timeZone: timeZone,
             usaTime: usaTime,
             timeValue:timeValue,
             usaNewyorkTime:usaNewyorkTime,
-            timeDate:timeDate
+            timeDate:timeDate,
+            indiaKolkataTime:indiaKolkataTime
         });
 });
 

@@ -1,5 +1,6 @@
 const express = require('express');
 var moment = require('moment');
+var mom = require('moment-timezone');
 
 const app = express();
 
@@ -19,17 +20,34 @@ app.get('/time',(req, res) => {
 
     let usaTime =
         date.toLocaleString("en-US", {
+            timeZone: "America/Chicago"
+        });
+    console.log('USA Chicago datetime: ' + usaTime);
+
+    let usaNewyorkTime =
+        date.toLocaleString("en-US", {
             timeZone: "America/New_York"
         });
-    console.log('USA datetime: ' + usaTime);
+    console.log('USA New York dateTime: ' + usaNewyorkTime);
+
+
+    var timeValue = toTimeZone(timeDate, "America/Chicago");
+
 
     res.render('time', {
             title : 'Local Time',
             timeZone: timeZone,
-            usaTime: usaTime
+            usaTime: usaTime,
+            timeValue:timeValue,
+            usaNewyorkTime:usaNewyorkTime,
+            timeDate:timeDate
         });
 });
 
+function toTimeZone(timeDate, zone) {
+    var format = 'YYYY/MM/DD HH:mm:ss ZZ';
+    return mom(timeDate).tz(zone).format(format);
+}
 
 // Server Listening
 app.listen(8081, () => {
